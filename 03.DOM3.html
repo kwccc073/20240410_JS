@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM3</title>
+    <style>
+        div {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <p>只有上去，他就味道唱片水果依舊，遺憾共享版所屬歐洲安徽在此，不需要通用一年如此哪個爭取最後，男人民。</p>
+    </div>
+    <div id="div2">
+        <p>鈴聲指數患者推薦內部求職，劇情公園這裡精華豐原定位印象將其語音採購，本帖多次，作業效益實行可是，不。</p>
+    </div>
+    <div id="div3">
+        <p>歐洲標誌玩家，大賽推進浙江房價休息隨後郵箱都能靈活故意性感到了，最新獲取完全我看，您現在我還地說鈴。</p>
+    </div>
+    <ul id="list1">
+        <li>西瓜</li>
+        <li>芒果</li>
+        <li>芭樂</li>
+    </ul>
+    <ul id="list2">
+        <li>香蕉</li>
+        <li>蘋果</li>
+        <li>葡萄</li>
+    </ul>
+
+
+    <script>
+        const div1 = document.getElementById('div1')
+        //.insertAdjacentHTML(位置, HTML)
+        /*
+        beforebegin 元素前標籤之前
+        afterbegin 元素前標籤之後
+        beforeend 元素後標籤之前
+        afterend 元素後標籤之後
+        */
+        div1.insertAdjacentHTML('beforebegin', '<p>beforebegin</p>')
+        div1.insertAdjacentHTML('afterbegin', '<p>afterbegin</p>')
+        div1.insertAdjacentHTML('beforeend', '<p>beforeend</p>')
+        div1.insertAdjacentHTML('afterend', '<p>afterend</p>')
+
+
+        const div2 = document.getElementById('div2')
+        // document.createElement(標籤名) 新增一個元素，需另外使用語法 DOM
+        const p = document.createElement('p')
+        p.innerText = '123456'
+        p.style.color = 'red'
+        const a = document.createElement('a')
+        a.innerText = 'X'
+        a.href = 'https://x.com'
+        /* .prepend()下一層的前面
+        如果東西不在頁面上會放上DOM，已經存在就移動位置*/
+        div2.prepend(p)
+        /* .append()下一層的後面
+        如果東西不在頁面上會放上DOM，已經存在就移動位置*/
+        div2.append(p, a)
+        /* 
+        .prependChild()
+        .appendChild()
+        同上，但只會處理第一個元素
+        */
+        div2.appendChild(p, a)
+
+        // div2.remove()
+
+        div2.removeChild(div2.firstElementChild)
+        /* 等同於：
+        div2.firstElementChild.remove()*/
+
+        const div3 = document.getElementById('div3')
+        const img = document.createElement('img')
+        img.src = 'https://github.com/rogeraabbccdd.png'
+        img.width = 10
+        /* .replaceChild(新,舊) 用新的取代舊的
+        如果東西不在頁面上會放上DOM，已經存在就移動位置
+        舊一定要在指定的元素內*/
+        div3.replaceChild(img, div3.firstElementChild)
+
+
+        const list1 = document.getElementById('list1')
+        const list2 = document.getElementById('list2')
+        // .insertBefore(A,B) 把A放到B前面，B必須在指定的元素內
+        list1.insertBefore(list2.firstElementChild, list1.firstElementChild)
+        // 當B為null時，會放在最後面
+        list1.insertBefore(list2.firstElementChild, null)
+    </script>
+</body>
+
+</html>
