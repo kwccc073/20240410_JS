@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    製作凱薩密碼(CaesarCipher)加密工具
+    使用者先輸入英文明文,再輸入數字密鑰
+    請編寫一個functio資料
+    將明文和密鑰傳入,回傳處理完後的密文
+    最後在網頁上顯示出來
+  -->
+  <script>
+    const encrypt = (text, key) => {
+      // 先轉大寫
+      text = text.toUpperCase()
+      // 建立結果字串
+      let result = ''
+      // 迴圈每個字
+      for (let i = 0; i < text.length; i++) {
+        // 取目前文字的 ASCII
+        let code = text.charCodeAt(i)
+        // 不是空白才加密
+        if (code !== 32) {
+          code = (code - 65 + key) % 26 + 65
+          // 放進結果字串
+          result += String.fromCharCode(code)
+        } else {
+          result += ' '
+        }
+      }
+      return result
+    }
+
+    const text = prompt('text')
+    const key = prompt('key')
+
+    document.write(encrypt(text, parseInt(key)))
+  </script>
+</body>
+
+</html>
