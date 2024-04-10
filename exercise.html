@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise</title>
+    <style>
+        #span {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    製作倒數計時器
+    使用者用 prompt() 輸入秒數數字
+    在網頁只能有一行字顯示 剩餘 X 秒，秒數不能變負數，顏色為藍色
+    時間到時文字變成紅色的 時間到
+    -->
+    <span id="span">
+        剩餘<span id="second">X</span> 秒
+    </span>
+
+    <script>
+        let user = parseInt(prompt('輸入秒數數字'))
+        const timer = setInterval(() => {
+            if (user === 0) {
+                clearInterval(timer)
+                const span = document.getElementById('span')
+                span.innerText = `時間到`
+                span.style.color = 'red'
+            } else {
+                const second = document.getElementById('second')
+                second.innerText = `${user}`
+                user--
+            }
+        }, 1000)
+
+    </script>
+</body>
+
+</html>
